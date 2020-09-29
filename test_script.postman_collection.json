@@ -57,7 +57,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://{{baseUrl}}:9443/client-registration/v0.17/register",
+					"raw": "https://{{baseUrl}}:9443/client-registration/v0.16/register",
 					"protocol": "https",
 					"host": [
 						"{{baseUrl}}"
@@ -65,7 +65,7 @@
 					"port": "9443",
 					"path": [
 						"client-registration",
-						"v0.17",
+						"v0.16",
 						"register"
 					]
 				}
