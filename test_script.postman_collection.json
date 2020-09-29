@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "98fd4f4d-898a-4740-bcb5-5058c911bea5",
-		"name": "AMP Demo",
+		"name": "APIM Demo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -57,7 +57,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://{{baseUrl}}:9443/client-registration/v0.16/register",
+					"raw": "https://{{baseUrl}}:9443/client-registration/v0.17/register",
 					"protocol": "https",
 					"host": [
 						"{{baseUrl}}"
@@ -65,7 +65,7 @@
 					"port": "9443",
 					"path": [
 						"client-registration",
-						"v0.16",
+						"v0.17",
 						"register"
 					]
 				}
