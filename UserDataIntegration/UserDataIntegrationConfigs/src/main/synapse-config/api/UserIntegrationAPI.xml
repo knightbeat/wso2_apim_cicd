@@ -18,7 +18,7 @@
             </log>
             <call>
                 <endpoint>
-                    <http method="post" uri-template="http://dev.wso2.com:8595/api/users">
+                    <http method="post" uri-template="http://dev.be.com:8595/api/users">
                         <suspendOnFailure>
                             <initialDuration>-1</initialDuration>
                             <progressionFactor>-1</progressionFactor>
@@ -42,7 +42,7 @@
             <property expression="get-property('uri.var.ssn')" name="ssn" scope="default" type="STRING"/>
             <call>
                 <endpoint>
-                    <http uri-template="http://dev.wso2.com:8595/">
+                    <http uri-template="http://dev.be.com:8595/">
                         <suspendOnFailure>
                             <initialDuration>-1</initialDuration>
                             <progressionFactor>-1</progressionFactor>
@@ -66,7 +66,7 @@
             <property expression="get-property('uri.var.userID')" name="userID" scope="default" type="STRING"/>
             <call>
                 <endpoint>
-                    <http uri-template="http://dev.wso2.com:8595/">
+                    <http uri-template="http://dev.be.com:8595/">
                         <suspendOnFailure>
                             <initialDuration>-1</initialDuration>
                             <progressionFactor>-1</progressionFactor>
@@ -90,7 +90,7 @@
             <property expression="get-property('uri.var.userID')" name="userID" scope="default" type="STRING"/>
             <call>
                 <endpoint>
-                    <http uri-template="http://dev.wso2.com:8595/">
+                    <http uri-template="http://dev.be.com:8595/">
                         <suspendOnFailure>
                             <initialDuration>-1</initialDuration>
                             <progressionFactor>-1</progressionFactor>
