@@ -83,4 +83,23 @@ please change the URLs accordingly.
     * Add the prod environment : `apictl add-env -e prod --apim https://prod.apim.com:9444 --token https://prod.apim.com:8244/token`
     * Login to the dev environment : `apictl login dev -u admin -p admin -k`
 
+##### EI Project
+* For EI artifacts, will use [here](UserDataIntegration), please refer to the the detail of the API definitions to understand the resources EI exposes. (For curiosity have modified user data post API to show case somewhat complex transformation with service chaining capabilities)
+
+
+#### Jenkins Server
+1. Login to the jenkins server. You might have to create a user if this is the first time.
+2. Install [npm and nodejs plugins](https://wiki.jenkins.io/display/JENKINS/NodeJS+Plugin) 
+and [Newman](https://learning.getpostman.com/docs/postman/collection-runs/integration-with-jenkins/#installation) globally in your Jenkins server. 
+![Jenkins nodejs and newman config](images/jenkins-nodejs-newman-config.png)
+Newman is used to run the tests I have created using PostMan. The test script can be found [here](apim_artifacts/test_script.postman_collection.json).
+3. Download and configure [WSO2 API Controller](https://wso2.com/api-management/tooling/) to the Jenkins server and the developer machines.
+![Jenkins apictl config](images/jenkins-apictl-config.png)
+
+Note that you need to add the environments properly to the API Controller in the Jenkins Server. You can add environments 
+by either manually editing the `<USER_HOME>/.wso2apictl/main_config.yaml` file or by running the following CTL command or follow the
+
+Don't forget that usually jenkins create a new user called *jenkins* and the environment should be added to that user or else 
+
+jenkins server won't notice this. The same commands mentioned in the above topic can be used for this.
 
