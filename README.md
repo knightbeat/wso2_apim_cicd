@@ -45,7 +45,7 @@ simply started by executing `java -jar target/backend-server-1.0.0.jar`
 
 All the available services will be shown in the Swagger UI.
 
-Swagger UI URL: [http://localhost:8595/swagger-ui.html]()
+Swagger UI URL: [http://localhost:8595/swagger-ui.html]() Note: you need to map this to dev.be.com or if you prefer to run two backend, please alter it as it required
 
 ![Swagger UI](images/swagger-ui.png)
 
@@ -189,3 +189,5 @@ Within this stage following steps happening
             }
         }
 ```
+
+
