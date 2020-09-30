@@ -90,7 +90,7 @@ please change the URLs accordingly.
 #### Jenkins Server
 1. Login to the jenkins server. You might have to create a user if this is the first time.
 2. Install [npm and nodejs plugins](https://wiki.jenkins.io/display/JENKINS/NodeJS+Plugin) 
-and [Newman](https://learning.getpostman.com/docs/postman/collection-runs/integration-with-jenkins/#installation) globally in your Jenkins server. 
+and [Newman](https://learning.getpostman.com/docs/postman/collection-runs/integration-with-jenkins/#installation) globally in your Jenkins server. Same way you need to install maven which allows maven artifacts to be build and deploy
 ![Jenkins nodejs and newman config](images/jenkins-nodejs-newman-config.png)
 Newman is used to run the tests I have created using PostMan. The test script can be found [here](apim_artifacts/test_script.postman_collection.json).
 3. Download and configure [WSO2 API Controller](https://wso2.com/api-management/tooling/) to the Jenkins server and the developer machines.
@@ -103,4 +103,23 @@ by either manually editing the `<USER_HOME>/.wso2apictl/main_config.yaml` file o
 ![GitHub Credentials](images/jenkins-credentials.png)
 5. Add the Jenkins pipeline configuration defined in [here](jenkinsfile). Don't forget to change the GitHub url accordingly.
 ![Jenkins Pipeline](images/jenkins_pipeline.png)
+5. Once the repo is created, will have to configure webhooks. This allows Jenkins to pick how any commits events and build the pipeline, which we will test a bit later.
+![Jenkins GitHub Webhook](images/webhook.png). 
+Note that the url has to be passed here and if the Jenkins is deployed locally, then you can use [ngrol](https://ngrok.com/) 
+to expose your localhost through the internet.
+
+6. You can either clone the repo ‘wso2_apim_cicd’ or can create a new repo based on the preference. But the idea is understand how jenkinepiple script
+`  environment {
+        CI = 'true'
+        CURR_DIR = pwd()
+        API_DIR = '/UserAPI'
+        DEV_ENV = 'dev'
+        PROD_ENV = 'prod'
+        TEST_SCRIPT_FILE = 'test_script.postman_collection.json' 
+        INTEGRATION_DIR = '/UserDataIntegration'
+        dev_ei_host='dev.ei.com'
+        prod_ei_host='dev.ei.com'
+    }
+`
+Above, you will find the, as per the environment, it will pick ‘UserAPI’ directory for API deployment and the ‘UserDataIntegration’  also, you will find we have used DEV_ENV, PROD_ENV which allows jenkinsfile pipeline executors to understand when executing APIM-CLI to use correct environment properties
 
