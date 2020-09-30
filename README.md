@@ -163,10 +163,11 @@ Above, you will find the, as per the environment, it will pick ‘UserAPI’ dir
         }
 ```
 Within this stage following steps happening
- 	* Jenkins pipeline pick the EI artifact namely with [here](UserDataIntegration), the carbon application start to build
- 	* Jenkins upon the success of the stage, then the maven deployer `mvn clean deploy -Dmaven.deploy.skip=true -Dmaven.car.deploy.skip=false -Dei.host=$dev_ei_host` will use to deploy the artifact to the EI node (in real life this will be deploy to the master EI node where other worker nodes will eventually synchronize the carbon application via depsynch mechanism)
- 	* You will notice something called `-Dei.host=$dev_ei_host` this one of the best practices we do recommend for passing environment specific variable, you can use this variable to populate synapse artifacts EPs etc etc where it different from environment to environment (pretty easy ah ..)
- 	* Then API-M CLI usage, you will find that it's the same command that is documented in CLI documentation with reference to the API deployment, but please understand how variables are being declared, which you can change per the project's behavior.
+ 	
+ * Jenkins pipeline pick the EI artifact namely with [here](UserDataIntegration), the carbon application start to build
+ * Jenkins upon the success of the stage, then the maven deployer `mvn clean deploy -Dmaven.deploy.skip=true -Dmaven.car.deploy.skip=false -Dei.host=$dev_ei_host` will use to deploy the artifact to the EI node (in real life this will be deploy to the master EI node where other worker nodes will eventually synchronize the carbon application via depsynch mechanism)
+ * You will notice something called `-Dei.host=$dev_ei_host` this one of the best practices we do recommend for passing environment specific variable, you can use this variable to populate synapse artifacts EPs etc etc where it different from environment to environment (pretty easy ah ..)
+ * Then API-M CLI usage, you will find that it's the same command that is documented in CLI documentation with reference to the API deployment, but please understand how variables are being declared, which you can change per the project's behavior.
 
 ```
   echo 'Logging into $DEV_ENV'
