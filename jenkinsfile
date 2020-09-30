@@ -15,6 +15,8 @@ pipeline {
         PROD_ENV = 'prod'
         TEST_SCRIPT_FILE = 'test_script.postman_collection.json' 
         INTEGRATION_DIR = '/UserDataIntegration'
+        dev_ei_host='dev.ei.com'
+        prod_ei_host='dev.ei.com'
     }
     stages {
         
@@ -40,13 +42,13 @@ pipeline {
         
                 echo 'Build  project -Dev $DEV_ENV'
                 dir("UserDataIntegration"){
-                    sh 'mvn clean install -Dmaven.test.skip '
+                    sh 'mvn clean install -Dmaven.test.skip -Dei.host=$dev_ei_host'
                 }
                 
                 echo 'Deploying EI project -Dev $DEV_ENV'
                 
                 dir("UserDataIntegration/UserDataIntegrationCompositeExporter"){
-                    sh 'mvn clean deploy -Dmaven.deploy.skip=true -Dmaven.car.deploy.skip=false '
+                    sh 'mvn clean deploy -Dmaven.deploy.skip=true -Dmaven.car.deploy.skip=false -Dei.host=$dev_ei_host'
                 }
                 
                 waitForDeployment()
