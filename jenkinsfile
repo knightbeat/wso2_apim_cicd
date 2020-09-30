@@ -38,10 +38,18 @@ pipeline {
             }
             steps {
         
-                echo 'Build and deploy EI project -Dev $DEV_ENV'
+                echo 'Build  project -Dev $DEV_ENV'
                 dir("UserDataIntegration"){
                     sh 'mvn clean install -Dmaven.test.skip '
                 }
+                
+                echo 'Deploying EI project -Dev $DEV_ENV'
+                
+                dir("UserDataIntegration/UserDataIntegrationCompositeExporter"){
+                    sh 'mvn clean deploy -Dmaven.deploy.skip=true -Dmaven.car.deploy.skip=false '
+                }
+                
+                waitForDeployment()
                 
                 echo 'Logging into $DEV_ENV'
                 withCredentials([usernamePassword(credentialsId: 'dev_apim_admin', usernameVariable: 'DEV_USERNAME', passwordVariable: 'DEV_PASSWORD')]) {
@@ -74,4 +82,10 @@ pipeline {
     
     }
    
+}
+
+def waitForDeployment() {
+    echo "Sleeping start... 10seconds."
+    sleep(10)
+    echo "Sleeping ends"
 }
