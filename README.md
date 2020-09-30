@@ -109,7 +109,7 @@ Note that the url has to be passed here and if the Jenkins is deployed locally, 
 to expose your localhost through the internet.
 
 6. You can either clone the repo ‘wso2_apim_cicd’ or can create a new repo based on the preference. But the idea is understand how jenkinepiple script
-`  environment {
+```  environment {
         CI = 'true'
         CURR_DIR = pwd()
         API_DIR = '/UserAPI'
@@ -120,6 +120,6 @@ to expose your localhost through the internet.
         dev_ei_host='dev.ei.com'
         prod_ei_host='dev.ei.com'
     }
-`
+```
 Above, you will find the, as per the environment, it will pick ‘UserAPI’ directory for API deployment and the ‘UserDataIntegration’  also, you will find we have used DEV_ENV, PROD_ENV which allows jenkinsfile pipeline executors to understand when executing APIM-CLI to use correct environment properties
 
