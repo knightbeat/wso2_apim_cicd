@@ -26,9 +26,9 @@ For this demonstration the following architecture will be used.
 ### 1. Setup hosts for deployment
 
 You need to setup following at the hosts for domain mappings
-<<host>> dev.apim.com  prod.apim.com
-<<host>> dev.be.com  prod.be.com
-<<host>> dev.ei.com  prod.ei.com
+* <<host>> dev.apim.com  prod.apim.com
+* <<host>> dev.be.com  prod.be.com
+* <<host>> dev.ei.com  prod.ei.com
 
 ### 2. Deploy the backend server
 
