@@ -579,7 +579,7 @@
 	"variable":[
 		{
 			"key": "baseUrl",
-			"value": "localhost",
+			"value": "dev.apim.com",
 			"enabled": true
 		},
 		{
