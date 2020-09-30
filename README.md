@@ -99,7 +99,8 @@ Newman is used to run the tests I have created using PostMan. The test script ca
 Note that you need to add the environments properly to the API Controller in the Jenkins Server. You can add environments 
 by either manually editing the `<USER_HOME>/.wso2apictl/main_config.yaml` file or by running the following CTL command or follow the
 
-Don't forget that usually jenkins create a new user called *jenkins* and the environment should be added to that user or else 
-
-jenkins server won't notice this. The same commands mentioned in the above topic can be used for this.
+4. Store the GitHub and APIM user credentials on Jenkins. Note that this can be done more securely using GitHub Apps.
+![GitHub Credentials](images/jenkins-credentials.png)
+5. Add the Jenkins pipeline configuration defined in [here](jenkinsfile). Don't forget to change the GitHub url accordingly.
+![Jenkins Pipeline](images/jenkins_pipeline.png)
 
