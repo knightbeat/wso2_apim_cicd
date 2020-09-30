@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/userIntegration" name="Api Documentation" version="1.0" version-type="context" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" url-mapping="/api/users">
+        <inSequence>
+            <log level="full">
+                <property name="before tranforming" value="test"/>
+            </log>
+            <datamapper config="gov:datamapper/SalesforceLeadsMappingConfig.dmc" description="Transform leads payload JSON to XML" inputSchema="gov:datamapper/SalesforceLeadsMappingConfig_inputSchema.json" inputType="JSON" outputSchema="gov:datamapper/SalesforceLeadsMappingConfig_outputSchema.json" outputType="XML"/>
+            <log level="full">
+                <property name="after " value="tranforming"/>
+            </log>
+            <payloadFactory media-type="json">
+                <format>{"fullName":"John Doe","dob":"20/04/1992","city":"Colombo","ssn":"123"}</format>
+                <args/>
+            </payloadFactory>
+            <log level="full">
+                <property name="payload to call to BE " value="BE"/>
+            </log>
+            <call>
+                <endpoint>
+                    <http method="post" uri-template="http://dev.wso2.com:8595/api/users">
+                        <suspendOnFailure>
+                            <initialDuration>-1</initialDuration>
+                            <progressionFactor>-1</progressionFactor>
+                            <maximumDuration>0</maximumDuration>
+                        </suspendOnFailure>
+                        <markForSuspension>
+                            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                        </markForSuspension>
+                    </http>
+                </endpoint>
+            </call>
+            <loopback/>
+        </inSequence>
+        <outSequence>
+            <respond/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/api/users/ssn/{ssn}">
+        <inSequence>
+            <property expression="get-property('uri.var.ssn')" name="ssn" scope="default" type="STRING"/>
+            <call>
+                <endpoint>
+                    <http uri-template="http://dev.wso2.com:8595/">
+                        <suspendOnFailure>
+                            <initialDuration>-1</initialDuration>
+                            <progressionFactor>-1</progressionFactor>
+                            <maximumDuration>0</maximumDuration>
+                        </suspendOnFailure>
+                        <markForSuspension>
+                            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                        </markForSuspension>
+                    </http>
+                </endpoint>
+            </call>
+            <loopback/>
+        </inSequence>
+        <outSequence>
+            <respond/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" uri-template="/api/users/verify/{userID}">
+        <inSequence>
+            <property expression="get-property('uri.var.userID')" name="userID" scope="default" type="STRING"/>
+            <call>
+                <endpoint>
+                    <http uri-template="http://dev.wso2.com:8595/">
+                        <suspendOnFailure>
+                            <initialDuration>-1</initialDuration>
+                            <progressionFactor>-1</progressionFactor>
+                            <maximumDuration>0</maximumDuration>
+                        </suspendOnFailure>
+                        <markForSuspension>
+                            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                        </markForSuspension>
+                    </http>
+                </endpoint>
+            </call>
+            <loopback/>
+        </inSequence>
+        <outSequence>
+            <respond/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="PUT DELETE GET" uri-template="/api/users/{userID}">
+        <inSequence>
+            <property expression="get-property('uri.var.userID')" name="userID" scope="default" type="STRING"/>
+            <call>
+                <endpoint>
+                    <http uri-template="http://dev.wso2.com:8595/">
+                        <suspendOnFailure>
+                            <initialDuration>-1</initialDuration>
+                            <progressionFactor>-1</progressionFactor>
+                            <maximumDuration>0</maximumDuration>
+                        </suspendOnFailure>
+                        <markForSuspension>
+                            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                        </markForSuspension>
+                    </http>
+                </endpoint>
+            </call>
+            <loopback/>
+        </inSequence>
+        <outSequence>
+            <respond/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

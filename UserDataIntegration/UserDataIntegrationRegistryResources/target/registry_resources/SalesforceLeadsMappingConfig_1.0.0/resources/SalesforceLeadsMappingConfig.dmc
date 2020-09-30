@@ -1,0 +1,46 @@
+map_S_root_S_Envelope = function(){ 
+var outputsoapenv_Envelope={};
+
+var count_i_lead_4b86d2be_3a2b_420d_a021_05159e80d594 = 0;
+var count_i_owner_eeffea30_bd7e_48b6_a7e5_8defd61f2a48 = 0;
+outputsoapenv_Envelope =  {};
+outputsoapenv_Envelope.soapenv_Header =  {};
+outputsoapenv_Envelope.soapenv_Header.urn_SessionHeader =  {};
+outputsoapenv_Envelope.soapenv_Header.urn_SessionHeader.urn_sessionId = inputroot.sessionId;
+outputsoapenv_Envelope.soapenv_Body =  {};
+outputsoapenv_Envelope.soapenv_Body.urn_convertLead =  {};
+outputsoapenv_Envelope.soapenv_Body.urn_convertLead.urn_leadConverts =  [];
+
+for(i_lead_4b86d2be_3a2b_420d_a021_05159e80d594 in inputroot.lead){
+
+count_i_lead_4b86d2be_3a2b_420d_a021_05159e80d594++;
+}
+
+for(i_owner_eeffea30_bd7e_48b6_a7e5_8defd61f2a48 in inputroot.owner){
+outputsoapenv_Envelope.soapenv_Body.urn_convertLead.urn_leadConverts[count_i_owner_eeffea30_bd7e_48b6_a7e5_8defd61f2a48] =  {};
+outputsoapenv_Envelope.soapenv_Body.urn_convertLead.urn_leadConverts[count_i_owner_eeffea30_bd7e_48b6_a7e5_8defd61f2a48].urn_convertedStatus = inputroot.convertedStatus;
+outputsoapenv_Envelope.soapenv_Body.urn_convertLead.urn_leadConverts[count_i_owner_eeffea30_bd7e_48b6_a7e5_8defd61f2a48].urn_doNotCreateOpportunity = (inputroot.doNotCreateOpportunity == 'true');
+outputsoapenv_Envelope.soapenv_Body.urn_convertLead.urn_leadConverts[count_i_owner_eeffea30_bd7e_48b6_a7e5_8defd61f2a48].urn_leadId = inputroot.lead[i_owner_eeffea30_bd7e_48b6_a7e5_8defd61f2a48].ID;
+outputsoapenv_Envelope.soapenv_Body.urn_convertLead.urn_leadConverts[count_i_owner_eeffea30_bd7e_48b6_a7e5_8defd61f2a48].urn_opportunityName = inputroot.opportunityName;
+outputsoapenv_Envelope.soapenv_Body.urn_convertLead.urn_leadConverts[count_i_owner_eeffea30_bd7e_48b6_a7e5_8defd61f2a48].urn_overwriteLeadSource = (inputroot.overwriteLeadSource == 'true');
+outputsoapenv_Envelope.soapenv_Body.urn_convertLead.urn_leadConverts[count_i_owner_eeffea30_bd7e_48b6_a7e5_8defd61f2a48].urn_ownerId = inputroot.owner[i_owner_eeffea30_bd7e_48b6_a7e5_8defd61f2a48].ID;
+outputsoapenv_Envelope.soapenv_Body.urn_convertLead.urn_leadConverts[count_i_owner_eeffea30_bd7e_48b6_a7e5_8defd61f2a48].urn_sendNotificationEmail = (inputroot.overwriteLeadSource == 'true');
+
+count_i_owner_eeffea30_bd7e_48b6_a7e5_8defd61f2a48++;
+}
+return outputsoapenv_Envelope;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
