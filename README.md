@@ -48,3 +48,19 @@ All the available services will be shown in the Swagger UI.
 Swagger UI URL: [http://localhost:8595/swagger-ui.html]()
 
 ![Swagger UI](images/swagger-ui.png)
+
+### 2. Install the Jenkins server
+
+Installing jenkins server is straight forward, you can either deploy it as docker or you can get Web application ARchive (WAR) and there are other options too . Please refer to their official [documentation](https://www.jenkins.io/doc/book/installing/)
+for this.
+
+### 3. Install WSO2 API Manager
+
+For installing WSO2 API Manager please refer to this [documentation](https://apim.docs.wso2.com/en/latest/install-and-setup/install/installing-the-product/installing-the-product/)
+for more information on that. For this demonstration I'll be having two environments called Dev and Test but any number 
+of environments can be there and the steps are pretty much the same.
+
+### 3. Install WSO2 Enterprise Integrator 
+
+For installing WSO2 Enterprise Integrator  please refer to this [documentation](https://docs.wso2.com/display/EI660/Installation+Guide/)
+for more information on that. 
