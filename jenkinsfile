@@ -3,28 +3,46 @@ pipeline {
        githubPush()
     }
     agent any
-    tools {nodejs "Node"}
+    tools {
+          nodejs "Node"
+          maven 'maven-3.6.3'
+    }
     environment {
         CI = 'true'
         CURR_DIR = pwd()
         API_DIR = '/UserAPI'
         DEV_ENV = 'dev'
         PROD_ENV = 'prod'
-        TEST_SCRIPT_FILE = 'test_script.postman_collection.json'        
+        TEST_SCRIPT_FILE = 'test_script.postman_collection.json' 
+        INTEGRATION_DIR = '/UserDataIntegration'
     }
     stages {
+        
+        
         stage('Preparation') {
             steps{
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
                 git branch: "master",
                 url: 'https://github.com/dushansachinda/wso2_apim_cicd.git',
                 credentialsId: 'demo-github-cred'
             }
         }
+        
+
         stage('Deploy to UAT') {
             environment{
                 RETRY = '80'
             }
             steps {
+        
+                echo 'Build and deploy EI project -Dev $DEV_ENV'
+                dir("UserDataIntegration"){
+                    sh 'mvn clean install -Dmaven.test.skip '
+                }
+                
                 echo 'Logging into $DEV_ENV'
                 withCredentials([usernamePassword(credentialsId: 'dev_apim_admin', usernameVariable: 'DEV_USERNAME', passwordVariable: 'DEV_PASSWORD')]) {
                     sh 'apictl login $DEV_ENV -u $DEV_USERNAME -p $DEV_PASSWORD -k'                        
