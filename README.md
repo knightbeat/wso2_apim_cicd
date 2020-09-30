@@ -1,11 +1,12 @@
 CICD Pipeline for WSO2 API Manager / Enterprise Integration
 
 Following guidlines will help you to determine the how to setup CICD pipleline for WSO2 APIM and Integration, we call this API platform.
-
 APIs have become the defacto for connecting apps, services and data. Organizations have multiple environments such as 
 Dev, Test and Prod for different purposes. Therefore, the APIs and integration goes hand to hand and  need to be available 
-in each environment after developers specify the required conditions. This process will be hugely, reduce the manually promoting APIs, integration artifacts between environments which is a tedious, error-prone, and 
-time-consuming task
+in each environment after developers specify the required conditions.WSO2 Enterprise Integrator is an open-source, light-weight, battle-tested, hybrid integration platform which comes with Apache 2.0 license.
+
+Combine effort of automating the deployment process will be hugely reduce the manually promoting APIs and deploying composite artifacts, we have noticed in the past, integrating  artifacts between environments which is a tedious, error-prone, and 
+time-consuming task thus all these effort is to streamline the operations much faster.
 
 ![CI/CD pipeline for APIs with WSO2 API Manager](images/ci-cd-pipeline-for-apis-with-wso2-apim.png)
 
@@ -38,3 +39,12 @@ or build the application
 
 * Start the application : `mvn spring-boot:run`
 * Build the application : `mvn clean install`
+
+Note that the jar is already built and stored [here](backend_server/target/backend-server-1.0.0.jar) and that can be 
+simply started by executing `java -jar target/backend-server-1.0.0.jar`
+
+All the available services will be shown in the Swagger UI.
+
+Swagger UI URL: [http://localhost:8595/swagger-ui.html]()
+
+![Swagger UI](images/swagger-ui.png)
