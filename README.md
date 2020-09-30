@@ -6,7 +6,7 @@ Dev, Test and Prod for different purposes. Therefore, the APIs and integration g
 in each environment after developers specify the required conditions.WSO2 Enterprise Integrator is an open-source, light-weight, battle-tested, hybrid integration platform which comes with Apache 2.0 license.
 
 Combine effort of automating the deployment process will be hugely reduce the manually promoting APIs and deploying composite artifacts, we have noticed in the past, integrating  artifacts between environments which is a tedious, error-prone, and 
-time-consuming task thus all these effort is to streamline the operations much faster.
+a time-consuming task thus all these efforts is to streamline the operations much faster.
 
 ![CI/CD pipeline for APIs with WSO2 API Manager](images/ci-cd-pipeline-for-apis-with-wso2-apim.png)
 
@@ -51,7 +51,7 @@ Swagger UI URL: [http://localhost:8595/swagger-ui.html]()
 
 ### 2. Install the Jenkins server
 
-Installing jenkins server is straight forward, you can either deploy it as docker or you can get Web application ARchive (WAR) and there are other options too . Please refer to their official [documentation](https://www.jenkins.io/doc/book/installing/)
+Installing jenkins server is straightforward, you can either deploy it as docker or you can get Web application ARchive (WAR) and there are other options too . Please refer to their official [documentation](https://www.jenkins.io/doc/book/installing/)
 for this.
 
 ### 3. Install WSO2 API Manager
@@ -129,4 +129,62 @@ Above, you will find the, as per the environment, it will pick ‘UserAPI’ dir
 * Now let's do a small change and commit it to the repo. Jenkins should pick that change via the webhook and the job should be started.
 ![Jenkins Builds](images/jenkins-build-jobs.png)
 
+#### Things to note what happening inside the jenkins script
 
+1. Lets looks at the UAT/PROD deployment pipeline
+
+```
+ stage('Deploy to UAT') {
+            environment{
+                RETRY = '80'
+            }
+            steps {
+        
+                echo 'Build  project -Dev $DEV_ENV'
+                dir("UserDataIntegration"){
+                    sh 'mvn clean install -Dmaven.test.skip -Dei.host=$dev_ei_host'
+                }
+                
+                echo 'Deploying EI project -Dev $DEV_ENV'
+                
+                dir("UserDataIntegration/UserDataIntegrationCompositeExporter"){
+                    sh 'mvn clean deploy -Dmaven.deploy.skip=true -Dmaven.car.deploy.skip=false -Dei.host=$dev_ei_host'
+                }
+                
+                waitForDeployment()
+                
+                echo 'Logging into $DEV_ENV'
+                withCredentials([usernamePassword(credentialsId: 'dev_apim_admin', usernameVariable: 'DEV_USERNAME', passwordVariable: 'DEV_PASSWORD')]) {
+                    sh 'apictl login $DEV_ENV -u $DEV_USERNAME -p $DEV_PASSWORD -k'                        
+                }
+                echo 'Deploying to $DEV_ENV'
+                sh 'apictl import-api -f $CURR_DIR$API_DIR -e $DEV_ENV -k --preserve-provider --update --verbose'
+            }
+        }
+```
+Within this stage following steps happening
+ 	* Jenkins pipeline pick the EI artifact namely with [here](UserDataIntegration), the carbon application start to build
+ 	* Jenkins upon the success of the stage, then the maven deployer `mvn clean deploy -Dmaven.deploy.skip=true -Dmaven.car.deploy.skip=false -Dei.host=$dev_ei_host` will use to deploy the artifact to the EI node (in real life this will be deploy to the master EI node where other worker nodes will eventually synchronize the carbon application via depsynch mechanism)
+ 	* You will notice something called `-Dei.host=$dev_ei_host` this one of the best practices we do recommend for passing environment specific variable, you can use this variable to populate synapse artifacts EPs etc etc where it different from environment to environment (pretty easy ah ..)
+ 	* Then API-M CLI usage, you will find that it's the same command that is documented in CLI documentation with reference to the API deployment, but please understand how variables are being declared, which you can change per the project's behavior.
+
+```
+  echo 'Logging into $DEV_ENV'
+                withCredentials([usernamePassword(credentialsId: 'dev_apim_admin', usernameVariable: 'DEV_USERNAME', passwordVariable: 'DEV_PASSWORD')]) {
+                    sh 'apictl login $DEV_ENV -u $DEV_USERNAME -p $DEV_PASSWORD -k'  
+
+  echo 'Deploying to $DEV_ENV'
+                sh 'apictl import-api -f $CURR_DIR$API_DIR -e $DEV_ENV -k --preserve-provider --update --verbose'
+
+```
+
+2. Newman test script execution, tho this provides the entrance to the test script execution, please go through the [here](est_script.postman_collection.json), this will be a good learning curve if someone wanna build a test scrit with postman. (I’m not going to much internals of that)
+
+```
+ stage('Run Tests') {
+            steps {
+                echo 'Running tests in $DEV_ENV'
+                sh 'newman run $CURR_DIR/$TEST_SCRIPT_FILE --insecure' 
+            }
+        }
+```
