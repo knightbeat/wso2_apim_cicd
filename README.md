@@ -15,7 +15,7 @@ time-consuming task thus all these effort is to streamline the operations much f
 
 For this demonstration the following architecture will be used.
 
-![CI/CD pipeline architecture](images/ci-cd-pipeline-demo-architecture.png)
+![CI/CD pipeline architecture](images/cicd-pipeline-demo-architecture-ei-apim)
 
 ## Prerequisites
 
