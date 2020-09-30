@@ -1,4 +1,4 @@
-CICD Pipeline for WSO2 API Manager / Enterprise Integration
+# CICD Pipeline for WSO2 API Manager / Enterprise Integration
 
 Following guidlines will help you to determine the how to setup CICD pipleline for WSO2 APIM and Integration, we call this API platform.
 APIs have become the defacto for connecting apps, services and data. Organizations have multiple environments such as 
