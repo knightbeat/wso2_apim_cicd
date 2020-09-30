@@ -1,6 +1,6 @@
 # CICD Pipeline for WSO2 API Manager / Enterprise Integration
 
-Following guidlines will help you to determine the how to setup CICD pipleline for WSO2 APIM and Integration, we call this API platform.
+Following guidelines will help you to determine how to setup the CICD pipeline for WSO2 APIM and Integration, we call this API platform.
 APIs have become the defacto for connecting apps, services and data. Organizations have multiple environments such as 
 Dev, Test and Prod for different purposes. Therefore, the APIs and integration goes hand to hand and  need to be available 
 in each environment after developers specify the required conditions.WSO2 Enterprise Integrator is an open-source, light-weight, battle-tested, hybrid integration platform which comes with Apache 2.0 license.
@@ -64,3 +64,23 @@ of environments can be there and the steps are pretty much the same.
 
 For installing WSO2 Enterprise Integrator  please refer to this [documentation](https://docs.wso2.com/display/EI660/Installation+Guide/)
 for more information on that. 
+
+## Configurations
+
+This demo consists of two parts, i.e deploying artifacts for APIM and while using the CTL tool functionalists. Sametime, prepare carbon application for integration, deploy them
+in the EI. Both having two different approach as of now, let's get into more detail in coming section
+
+##### API Project
+* API artifacts deployer will use [here](UserAPI), please refer to the the detail of the API definitions to understand the resources it exposing
+
+* You need to start two APIM nodes dev with port offset 0 i.e dev.apim.com, prod with port offset 1 i.e prod.apim.com
+
+* Execute the below commands to deploy this API on your development server. If your development server is not on the local machine, 
+please change the URLs accordingly.
+
+    * Add the dev environment : `apictl add-env -e dev --apim https://dev.apim.com:9443 --token https://dev.apim.com:8243/token`
+    * Login to the dev environment : `apictl login dev -u admin -p admin -k`
+    * Add the prod environment : `apictl add-env -e prod --apim https://prod.apim.com:9444 --token https://prod.apim.com:8244/token`
+    * Login to the dev environment : `apictl login dev -u admin -p admin -k`
+
+
