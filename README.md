@@ -189,5 +189,39 @@ Within this stage following steps happening
             }
         }
 ```
+3. Exploring APIM artifact deployment and the impact of api_params.yaml
 
+```
+environments:
+  - name: dev
+    endpoints:
+      production:
+        url: http://dev.ei.com:8283/userIntegration/api/users
+        config:
+          retryTimeOut: $RETRY
+      sandbox:
+        url: http://dev.ei.sandbox.wso2.com:8283/userIntegration/api/users
+        config:
+          retryTimeOut: $RETRY        
+  - name: prod
+    endpoints:
+      production:
+        url: http://prod.ei.com:8283/userIntegration/api/users
+        config:
+          retryTimeOut: $RETRY      
+      sandbox:
+        url: http://prod.ei.sandbox.wso2.com:8283/userIntegration/api/users
+        config:
+          retryTimeOut: $RETRY 
 
+```
+
+![Jenkins Builds](images/apim-dev-api-endpoint-param.png)
+
+![Jenkins Builds](images/apim-prod-api-endpoint-param.png)
+
+4. Exploring EI artifact deployment and the impact of via maven deployment plugin
+
+![Jenkins Builds](images/ei-dev-be-param.png)
+
+![Jenkins Builds](images/ei-dev-be-artifact-dep-view.png)
