@@ -17,6 +17,9 @@ For this demonstration the following architecture will be used.
 
 ![CI/CD pipeline architecture](images/cicd-pipeline-demo-architecture-ei-apim.png)
 
+![CI/CD Deployment port assignment](images/deployment-view.png)
+
+
 ## Prerequisites
 
 1. Deploy the backend server
@@ -225,3 +228,6 @@ environments:
 ![Jenkins Builds](images/ei-dev-be-param.png)
 
 ![Jenkins Builds](images/ei-dev-be-artifact-dep-view.png)
+
+
+Finally, happy reading!!
