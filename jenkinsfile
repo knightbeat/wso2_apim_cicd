@@ -17,6 +17,8 @@ pipeline {
         INTEGRATION_DIR = '/UserDataIntegration'
         dev_ei_host='dev.ei.com'
         prod_ei_host='dev.ei.com'
+        dev_user_be='dev.be.com'
+        prod_user_be='prod.be.com'
     }
     stages {
         
@@ -42,13 +44,13 @@ pipeline {
         
                 echo 'Build  project -Dev $DEV_ENV'
                 dir("UserDataIntegration"){
-                    sh 'mvn clean install -Dmaven.test.skip -Dei.host=$dev_ei_host'
+                    sh 'mvn clean install -Dmaven.test.skip -Dei.host=$dev_ei_host -Dbe.host=$dev_user_be'
                 }
                 
                 echo 'Deploying EI project -Dev $DEV_ENV'
                 
                 dir("UserDataIntegration/UserDataIntegrationCompositeExporter"){
-                    sh 'mvn clean deploy -Dmaven.deploy.skip=true -Dmaven.car.deploy.skip=false -Dei.host=$dev_ei_host'
+                    sh 'mvn clean deploy -Dmaven.deploy.skip=true -Dmaven.car.deploy.skip=false -Dei.host=$dev_ei_host -Dbe.host=$dev_user_be'
                 }
                 
                 waitForDeployment()
