@@ -12,10 +12,10 @@ environments:
   - name: prod
     endpoints:
       production:
-        url: http://prod.ei.com:8283/userIntegration/api/users
+        url: http://${PROD_EI_PROD_URL}/userIntegration/api/users
         config:
           retryTimeOut: $RETRY      
       sandbox:
-        url: http://prod.ei.sandbox.wso2.com:8283/userIntegration/api/users
+        url: http://${PROD_EI_SAND_URL}/userIntegration/api/users
         config:
           retryTimeOut: $RETRY 
