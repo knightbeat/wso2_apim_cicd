@@ -2,7 +2,7 @@ environments:
   - name: dev
     endpoints:
       production:
-        url: $DEV_ENV_PROD_URL
+        url: ${DEV_ENV_PROD_URL}/userIntegration/api/users
         config:
           retryTimeOut: $RETRY
       sandbox:
