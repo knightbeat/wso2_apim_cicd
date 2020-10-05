@@ -411,12 +411,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://{{baseUrl}}:{{servicePort}}/users/v1/",
-					"protocol": "https",
+					"raw": "http://{{baseUrl}}:{{serviceUnsecuredPort}}/users/v1/",
+					"protocol": "http",
 					"host": [
 						"{{baseUrl}}"
 					],
-					"port": "{{servicePort}}",
+					"port": "{{serviceUnsecuredPort}}",
 					"path": [
 						"users",
 						"v1",
@@ -466,12 +466,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://{{baseUrl}}:{{servicePort}}/users/v1/{{userID}}",
-					"protocol": "https",
+					"raw": "http://{{baseUrl}}:{{serviceUnsecuredPort}}/users/v1/{{userID}}",
+					"protocol": "http",
 					"host": [
 						"{{baseUrl}}"
 					],
-					"port": "{{servicePort}}",
+					"port": "{{serviceUnsecuredPort}}",
 					"path": [
 						"users",
 						"v1",
@@ -511,12 +511,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://{{baseUrl}}:{{servicePort}}/users/v1/{{userID}}",
-					"protocol": "https",
+					"raw": "http://{{baseUrl}}:{{serviceUnsecuredPort}}/users/v1/{{userID}}",
+					"protocol": "http",
 					"host": [
 						"{{baseUrl}}"
 					],
-					"port": "{{servicePort}}",
+					"port": "{{serviceUnsecuredPort}}",
 					"path": [
 						"users",
 						"v1",
@@ -590,6 +590,11 @@
 		{
 			"key": "servicePort",
 			"value": "8253",
+			"enabled": true
+		},
+		{
+			"key": "serviceUnsecuredPort",
+			"value": "8290",
 			"enabled": true
 		},
 		{
