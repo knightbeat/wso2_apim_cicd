@@ -57,12 +57,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://{{baseUrl}}:9443/client-registration/v0.16/register",
+					"raw": "https://{{baseUrl}}:{{adminPort}}/client-registration/v0.16/register",
 					"protocol": "https",
 					"host": [
 						"{{baseUrl}}"
 					],
-					"port": "9443",
+					"port": "{{adminPort}}",
 					"path": [
 						"client-registration",
 						"v0.16",
@@ -107,12 +107,12 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "https://{{baseUrl}}:8243/token?grant_type={{grant-type}}&username={{username}}&password={{password}}&scope=apim:subscribe",
+					"raw": "https://{{baseUrl}}:{{servicePort}}/token?grant_type={{grant-type}}&username={{username}}&password={{password}}&scope=apim:subscribe",
 					"protocol": "https",
 					"host": [
 						"{{baseUrl}}"
 					],
-					"port": "8243",
+					"port": "{{servicePort}}",
 					"path": [
 						"token"
 					],
@@ -183,12 +183,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://{{baseUrl}}:9443/api/am/store/v1/applications",
+					"raw": "https://{{baseUrl}}:{{adminPort}}/api/am/store/v1/applications",
 					"protocol": "https",
 					"host": [
 						"{{baseUrl}}"
 					],
-					"port": "9443",
+					"port": "{{adminPort}}",
 					"path": [
 						"api",
 						"am",
@@ -219,12 +219,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://{{baseUrl}}:9443/api/am/store/v1/apis",
+					"raw": "https://{{baseUrl}}:{{adminPort}}/api/am/store/v1/apis",
 					"protocol": "https",
 					"host": [
 						"{{baseUrl}}"
 					],
-					"port": "9443",
+					"port": "{{adminPort}}",
 					"path": [
 						"api",
 						"am",
@@ -282,12 +282,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://{{baseUrl}}:9443/api/am/store/v1/subscriptions",
+					"raw": "https://{{baseUrl}}:{{adminPort}}/api/am/store/v1/subscriptions",
 					"protocol": "https",
 					"host": [
 						"{{baseUrl}}"
 					],
-					"port": "9443",
+					"port": "{{adminPort}}",
 					"path": [
 						"api",
 						"am",
@@ -344,12 +344,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://{{baseUrl}}:9443/api/am/store/v1/applications/{{applicationId}}/generate-keys",
+					"raw": "https://{{baseUrl}}:{{adminPort}}/api/am/store/v1/applications/{{applicationId}}/generate-keys",
 					"protocol": "https",
 					"host": [
 						"{{baseUrl}}"
 					],
-					"port": "9443",
+					"port": "{{adminPort}}",
 					"path": [
 						"api",
 						"am",
@@ -411,12 +411,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://{{baseUrl}}:8243/users/v1/",
+					"raw": "https://{{baseUrl}}:{{servicePort}}/users/v1/",
 					"protocol": "https",
 					"host": [
 						"{{baseUrl}}"
 					],
-					"port": "8243",
+					"port": "{{servicePort}}",
 					"path": [
 						"users",
 						"v1",
@@ -466,12 +466,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{baseUrl}}:8280/users/v1/{{userID}}",
+					"raw": "https://{{baseUrl}}:{{servicePort}}/users/v1/{{userID}}",
 					"protocol": "http",
 					"host": [
 						"{{baseUrl}}"
 					],
-					"port": "8280",
+					"port": "{{servicePort}}",
 					"path": [
 						"users",
 						"v1",
@@ -511,12 +511,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://{{baseUrl}}:8280/users/v1/{{userID}}",
+					"raw": "https://{{baseUrl}}:{{servicePort}}/users/v1/{{userID}}",
 					"protocol": "http",
 					"host": [
 						"{{baseUrl}}"
 					],
-					"port": "8280",
+					"port": "{{servicePort}}",
 					"path": [
 						"users",
 						"v1",
@@ -556,12 +556,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://{{baseUrl}}:9443/api/am/store/v1/applications/{{applicationId}}",
+					"raw": "https://{{baseUrl}}:{{adminPort}}/api/am/store/v1/applications/{{applicationId}}",
 					"protocol": "https",
 					"host": [
 						"{{baseUrl}}"
 					],
-					"port": "9443",
+					"port": "{{adminPort}}",
 					"path": [
 						"api",
 						"am",
@@ -580,6 +580,16 @@
 		{
 			"key": "baseUrl",
 			"value": "dev.apim.com",
+			"enabled": true
+		},
+		{
+			"key": "adminPort",
+			"value": "9453",
+			"enabled": true
+		},
+		{
+			"key": "servicePort",
+			"value": "8253",
 			"enabled": true
 		},
 		{
