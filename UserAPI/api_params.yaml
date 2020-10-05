@@ -2,19 +2,19 @@ environments:
   - name: dev
     endpoints:
       production:
-        url: http://$DEV_EI_HOST:$DEV_EI_SVC_PORT/userIntegration/api/users
+        url: $DEV_ENV_PROD_URL
         config:
           retryTimeOut: $RETRY
       sandbox:
-        url: http://$DEV_SANDBOX_EI_HOST:$DEV_SANDBOX_EI_SVC_PORT/userIntegration/api/users
+        url: http://dev.ei.sandbox.wso2.com:8283/userIntegration/api/users
         config:
-          retryTimeOut: $RETRY
+          retryTimeOut: $RETRY        
   - name: prod
     endpoints:
       production:
         url: http://prod.ei.com:8283/userIntegration/api/users
         config:
-          retryTimeOut: $RETRY
+          retryTimeOut: $RETRY      
       sandbox:
         url: http://prod.ei.sandbox.wso2.com:8283/userIntegration/api/users
         config:
