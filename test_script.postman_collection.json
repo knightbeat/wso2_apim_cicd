@@ -467,7 +467,7 @@
 				"header": [],
 				"url": {
 					"raw": "https://{{baseUrl}}:{{servicePort}}/users/v1/{{userID}}",
-					"protocol": "http",
+					"protocol": "https",
 					"host": [
 						"{{baseUrl}}"
 					],
@@ -512,7 +512,7 @@
 				"header": [],
 				"url": {
 					"raw": "https://{{baseUrl}}:{{servicePort}}/users/v1/{{userID}}",
-					"protocol": "http",
+					"protocol": "https",
 					"host": [
 						"{{baseUrl}}"
 					],
