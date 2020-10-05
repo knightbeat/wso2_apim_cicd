@@ -2,7 +2,7 @@ environments:
   - name: dev
     endpoints:
       production:
-        url: http://$DEV_EI_HOST:DEV_EI_SVC_PORT/userIntegration/api/users
+        url: http://$DEV_EI_HOST:$DEV_EI_SVC_PORT/userIntegration/api/users
         config:
           retryTimeOut: $RETRY
       sandbox:
